@@ -21,7 +21,7 @@ function getCookie (name) {
     const cookie = pairs.find(p => p.startsWith(name + '='))
 
     if (cookie) {
-        return cookie.substr(name.lenght + 1)
+        return cookie.substring(name.lenght + 1)
     }
     
 }

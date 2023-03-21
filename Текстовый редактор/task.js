@@ -1,23 +1,18 @@
 const textarea = document.getElementById('editor')
-const storedTextarea = window.localStorage.getItem('textarea')
+const storedTextarea = localStorage.getItem('textarea')
 const button = document.querySelector('.clear')
 
-if (storedTextarea) {
-    textarea.textContent = storedTextarea
-}
+textarea.textContent = storedTextarea
 
-textarea.addEventListener('keydown', (e) => {
+textarea.addEventListener('keydown', () => {
 
-    if (e.key == "Enter" || e.key == "Tab" || e.key == "Shift") {
-        window.localStorage.setItem('textarea', textarea.value)
-    } else if (e.key == "Backspace") {
-        window.localStorage.setItem('textarea', textarea.value.slice(0, -1))
-    } else {
-        window.localStorage.setItem('textarea', textarea.value + e.key)
+    if (storedTextarea != textarea.value) {
+        localStorage.setItem('textarea', textarea.value)
     }
+
 });
 
 button.addEventListener('click', () => {
-    window.localStorage.removeItem('textarea')
+    localStorage.removeItem('textarea')
     textarea.textContent = ''
 })
